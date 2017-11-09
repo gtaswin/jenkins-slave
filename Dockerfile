@@ -17,7 +17,8 @@ RUN apt-get clean && apt-get update && apt-get install -y locales &&\
     apt-get -q clean -y && rm -rf /var/lib/apt/lists/* && rm -f /var/cache/apt/*.bin &&\
     sed -i 's|session    required     pam_loginuid.so|session    optional     pam_loginuid.so|g' /etc/pam.d/sshd &&\
     mkdir -p /var/run/sshd
-
+RUN git clone https://github.com/gunesmes/locust.git
+RUN python locust/setup.py install
 ENV LANG en_US.UTF-8
 ENV LANGUAGE en_US:en
 ENV LC_ALL en_US.UTF-8
